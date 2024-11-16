@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class WalkingDayDto {
 	private int day;
-	private boolean isWalkingDay;
+	private boolean hasWalked;
 }

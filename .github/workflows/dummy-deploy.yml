@@ -3,7 +3,7 @@ name: Deploy Spring Boot to AWS EKS
 on:
   push:
     branches:
-      - main
+      - feat/dummy
 
 jobs:
   deploy:
@@ -27,7 +27,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Make application.yml
-        if: contains(github.ref, 'main')
+        if: contains(github.ref, 'feat/dummy')
         run: |
           mkdir -p ./src/main/resources
           cd ./src/main/resources
@@ -35,7 +35,7 @@ jobs:
         shell: bash
 
       - name: Make application-prod.yml
-        if: contains(github.ref, 'main')
+        if: contains(github.ref, 'feat/dummy')
         run: |
           cd ./src/main/resources
           echo "${{ secrets.YML_PROD }}" > application-prod.yml

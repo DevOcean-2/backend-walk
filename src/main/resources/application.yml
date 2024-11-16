@@ -7,7 +7,11 @@ springdoc:
     disable-swagger-default-url: true
     display-request-duration: true
     operations-sorter: alpha
----
+
 spring:
   profiles:
     active: dev
+
+server:
+  servlet:
+    context-path: /walk
