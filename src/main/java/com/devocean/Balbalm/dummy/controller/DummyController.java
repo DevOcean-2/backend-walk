@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.devocean.Balbalm.calendar.dto.WalkingDayDto;
 import com.devocean.Balbalm.calendar.dto.resp.CalendarResponseDto;
 import com.devocean.Balbalm.dummy.dto.DogInfoResponseDto;
+import com.devocean.Balbalm.dummy.dto.PlaceResponseDto;
 import com.devocean.Balbalm.dummy.dto.WalkRankingResponseDto;
 import com.devocean.Balbalm.global.exception.CommonResponse;
 
@@ -63,5 +64,19 @@ public class DummyController {
 		WalkRankingResponseDto walkRankingResponse = new WalkRankingResponseDto(dogList);
 
 		return new CommonResponse<>(walkRankingResponse);
+	}
+
+	@GetMapping("/place-recommend")
+	public CommonResponse<List<PlaceResponseDto>> getPlaceRecommand() {
+		List<PlaceResponseDto> placeList = new ArrayList<>();
+		List<String> pictures = new ArrayList<>();
+		pictures.add("https://balm-bucket.s3.ap-northeast-2.amazonaws.com/images/place/image.png");
+		pictures.add("https://balm-bucket.s3.ap-northeast-2.amazonaws.com/images/place/image.png");
+		pictures.add("https://balm-bucket.s3.ap-northeast-2.amazonaws.com/images/place/image.png");
+
+		placeList.add(new PlaceResponseDto("모노톤베이크하우스", "카페, 디저트", pictures, 29, "경기 성남시 분당구 대왕판교로 103"));
+		placeList.add(new PlaceResponseDto("모노톤베이크하우스", "카페, 디저트", pictures, 29, "경기 성남시 분당구 대왕판교로 103"));
+
+		return new CommonResponse<>(placeList);
 	}
 }
